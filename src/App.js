@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { arr } from "../src/data/data";
 
 function App() {
+  // console.log(data);
+
+  const averages = [
+    ...arr.reduce(
+      (map, { Alcohol, "Malic Acid": malicAcid }) =>
+        map.set(Alcohol, [...(map.get(Alcohol) || []), malicAcid]),
+      new Map()
+    ),
+  ].map(([Alcohol, malicAcid]) => ({
+    Alcohol,
+    malicAcid: malicAcid.reduce((sum, val) => sum + val, 0) / malicAcid.length,
+  }));
+
+  console.log(averages);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>hello</h1>
     </div>
   );
 }
