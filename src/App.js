@@ -98,6 +98,11 @@ function App() {
         </select>
       </div>
 
+      <p className="app__title">
+        showing the “Alcohol” category on the horizontal axis and the average of
+        “Malic Acid” for each class on the vertical axis.
+      </p>
+
       <div className="app__graph">
         <ReactECharts option={options} />
       </div>

@@ -30,6 +30,17 @@
   margin: 3rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .app__chart-type {
+    margin: 3rem 1rem;
+    justify-content: center;
+  }
+
+  .app__graph {
+    margin: 3rem 1rem;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
