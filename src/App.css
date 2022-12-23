@@ -13,6 +13,23 @@
   color: #61dafb;
 }
 
+.app__chart-type {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  margin: 3rem;
+}
+
+.app__title {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.app__graph {
+  margin: 3rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
