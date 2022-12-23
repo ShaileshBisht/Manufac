@@ -2,8 +2,7 @@ import "./App.css";
 import { arr } from "../src/data/data";
 
 function App() {
-  // console.log(data);
-
+  //creating new array of oobject
   const averages = [
     ...arr.reduce(
       (map, { Alcohol, "Malic Acid": malicAcid }) =>
