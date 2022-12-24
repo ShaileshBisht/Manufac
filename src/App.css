@@ -26,6 +26,12 @@
   margin: 2rem 0;
 }
 
+.app__subTitle {
+  width: 90%;
+  margin: 2rem auto;
+  text-align: justify;
+}
+
 .app__graph {
   margin: 3rem;
 }
@@ -38,6 +44,12 @@
 
   .app__graph {
     margin: 3rem 1rem;
+  }
+
+  .app__subTitle {
+    width: 90%;
+    margin: 2rem auto;
+    text-align: justify;
   }
 }
 

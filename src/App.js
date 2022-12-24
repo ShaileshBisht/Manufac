@@ -58,9 +58,7 @@ function App() {
   let xaxis = Object.keys(resultNew);
   let yaxis = Object.values(resultNew);
 
-  console.log(chartType);
-
-  //
+  //bar chart
 
   const options = {
     grid: { top: 8, right: 8, bottom: 24, left: 36 },
@@ -83,6 +81,26 @@ function App() {
     },
   };
 
+  //Scatter plot
+
+  const scatterData = arr.map((item) => {
+    return [item["Color intensity"], item.Hue];
+  });
+
+  console.log(scatterData);
+
+  const option = {
+    xAxis: {},
+    yAxis: {},
+    series: [
+      {
+        symbolSize: 20,
+        data: scatterData,
+        type: "scatter",
+      },
+    ],
+  };
+
   return (
     <div className="App">
       <h1 className="app__title">Data Visualization Task</h1>
@@ -98,13 +116,23 @@ function App() {
         </select>
       </div>
 
-      <p className="app__title">
-        showing the “Alcohol” category on the horizontal axis and the average of
-        “Malic Acid” for each class on the vertical axis.
+      <p className="app__subTitle">
+        showing the “Alcohol” category on the horizontal axis and the{" "}
+        <strong>average</strong> of “Malic Acid” for each class on the vertical
+        axis.
       </p>
 
       <div className="app__graph">
         <ReactECharts option={options} />
+      </div>
+
+      <p className="app__subTitle">
+        Scatter plot to be drawn between “Color Intensity” on the horizontal
+        axis and “Hue” on the vertical axis.
+      </p>
+
+      <div className="app__graph">
+        <ReactECharts option={option} />
       </div>
     </div>
   );
