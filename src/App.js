@@ -2,61 +2,11 @@ import "./App.css";
 import { arr } from "../src/data/data";
 import ReactECharts from "echarts-for-react";
 import { useState } from "react";
+import scatterOption from "./data/scatter";
+import { xaxis, yaxis } from "./data/bar";
 
 function App() {
   const [chartType, setChartType] = useState("bar");
-
-  //creating new array of oobject
-  // const averages = [
-  //   ...arr.reduce(
-  //     (map, { Alcohol, "Malic Acid": malicAcid }) =>
-  //       map.set(Alcohol, [...(map.get(Alcohol) || []), malicAcid]),
-  //     new Map()
-  //   ),
-  // ].map(([Alcohol, malicAcid]) => ({
-  //   Alcohol,
-  //   malicAcid: malicAcid.reduce((sum, val) => sum + val, 0) / malicAcid.length,
-  // }));
-
-  // console.log(averages);
-
-  // get x-axis and y-axis data
-
-  // let result = {};
-  // averages.forEach((average) => {
-  //   const { Alcohol, malicAcid } = average;
-  //   result[`Alochol${Alcohol}`] = malicAcid;
-  // });
-  // console.log(Object.keys(result));
-  // console.log(Object.values(result));
-
-  //
-
-  // alternative code
-
-  let malicAcidSum = {};
-  let lengthMalicAcid = {};
-  let resultNew = {};
-  arr.forEach((wine) => {
-    const { Alcohol } = wine;
-    const Malic = wine["Malic Acid"];
-    let key = `Alcohol-${Alcohol}`;
-    if (key in malicAcidSum) {
-      let value = malicAcidSum[key];
-      malicAcidSum[key] = value + Malic;
-      lengthMalicAcid[key] += 1;
-    } else {
-      malicAcidSum[key] = Malic;
-      lengthMalicAcid[key] = 1;
-    }
-  });
-
-  Object.keys(malicAcidSum).forEach((key) => {
-    resultNew[key] = malicAcidSum[key] / lengthMalicAcid[key];
-  });
-
-  let xaxis = Object.keys(resultNew);
-  let yaxis = Object.values(resultNew);
 
   //bar chart
 
@@ -79,26 +29,6 @@ function App() {
     tooltip: {
       trigger: "axis",
     },
-  };
-
-  //Scatter plot
-
-  const scatterData = arr.map((item) => {
-    return [item["Color intensity"], item.Hue];
-  });
-
-  console.log(scatterData);
-
-  const option = {
-    xAxis: {},
-    yAxis: {},
-    series: [
-      {
-        symbolSize: 20,
-        data: scatterData,
-        type: "scatter",
-      },
-    ],
   };
 
   return (
@@ -131,8 +61,9 @@ function App() {
         axis and “Hue” on the vertical axis.
       </p>
 
+      {/* scatter graph */}
       <div className="app__graph">
-        <ReactECharts option={option} />
+        <ReactECharts option={scatterOption} />
       </div>
     </div>
   );
